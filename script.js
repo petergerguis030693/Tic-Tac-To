@@ -1,14 +1,5 @@
-let fields = [null, 
-    null, 
-    null, 
-    null, 
-    null, 
-    null, 
-    null, 
-    null, 
-    null,
-];
-
+let fields = [null, null, null, null, null, null, null, null, null];
+let currentPlayer = "O"; // Startet mit 'O'
 
 function render() {
   const table = document.getElementById("ticTacToeTable");
@@ -29,11 +20,33 @@ function render() {
   table.innerHTML = html;
 }
 
-function handleClick(index) {
-  console.log(`Cell ${index} clicked`);
-  // Hier könnte später Logik zum Setzen eines Symbols hinzugefügt werden
+function getSvg(symbol) {
+  if (symbol === "O") {
+    return `
+            <svg viewBox="0 0 64 64" width="64" height="64">
+                <circle cx="32" cy="32" r="25" />
+            </svg>
+        `;
+  } else if (symbol === "X") {
+    return `
+            <svg viewBox="0 0 64 64" width="64" height="64">
+                <line x1="15" y1="15" x2="49" y2="49" />
+                <line x1="49" y1="15" x2="15" y2="49" />
+            </svg>
+        `;
+  }
+  return "";
+
 }
 
-function init(){
+function handleClick(index) {
+  if (!fields[index]) {
+    fields[index] = currentPlayer;
+    currentPlayer = currentPlayer === "O" ? "X" : "O";
     render();
+  }
+}
+
+function init() {
+  render();
 }

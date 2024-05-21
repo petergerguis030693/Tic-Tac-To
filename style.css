@@ -1,10 +1,16 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #1e1d1d;
-    font-family: Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    color: white;
 }
 
 #game {
@@ -42,10 +48,26 @@ tr:not(:first-child) td {
 }
 
 
-.circle {
-    color: blue;
+.circle svg {
+    fill: none;
+    stroke: turquoise;
+    stroke-width: 5;
+    stroke-dasharray: 157;
+    stroke-dashoffset: 157;
+    animation: draw 0.5s forwards;
 }
 
-.cross {
-    color: red;
+.cross svg {
+    fill: none;
+    stroke: darkgoldenrod;
+    stroke-width: 5;
+    stroke-dasharray: 70;
+    stroke-dashoffset: 70;
+    animation: draw 0.5s forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
